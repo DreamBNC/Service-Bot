@@ -217,7 +217,7 @@ alias email.accept {
 
 alias my_erroralias {
   if ($0) echo -b $1-
-  else echo -b Mail Sent Complete!
+  else echo -b Mail Send Complete!
 }
 
 ; /////////////////////////// END EMAILS ////////
