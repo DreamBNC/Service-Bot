@@ -20,7 +20,7 @@ ON *:TEXT:!remove *:#: notice $nick 3Your remove was submitted and will be revi
 
 ON *:TEXT:!accept %bncserver1 *:#: {
   if ( $chan == %staffchan ) {
-    msg %bncchan [ACCEPT] Request from $3 was 3ACCEPTED by $nick $+ . This account has been located on the server, %bncserver1 $+ . Please check the email you used to request this BNC for more information. | set %pending none | msg *controlpanel adduser $3 $4 | msg *controlpanel addnetwork $3 $5 | msg *controlpanel addserver $3 $5 $6
+    msg %bncchan [ACCEPT] Request from $3 was 3ACCEPTED by $nick $+ . This account has been located on the server, %bncserver1 $+ . Details have been emailed to $6 $+ . | set %pending none | msg *controlpanel adduser $3 $4 | msg *controlpanel addnetwork $3 $5 | msg *controlpanel addserver $3 $5 $6 | %bncserver1 $+ .accept $6
   }
   else msg $nick 5Access Denied.
 }
