@@ -8,60 +8,60 @@ set %staffmember2 F4ncy
 set %staffmember3 xerox123
 set %staffmember4 HG
 set %bncwebsite wbnc.tk
-set %homechan #WBNC
+set %bncchan #WBNC
 set %staffchan #WBNC-Staff
 set %bncprovider WBNC
 }
 ---------------END CONFIG------------------
 ON 1:JOIN:#: notice $nick 2Welcome to 3W10$+ %bncprovider $+ 2, a free BNC provider! To request a BNC, type !request <username> <email> <network> <port> 	Ex. !request John john@gmail.com irc.rizon.net 6667
-ON *:TEXT:!report *:#: notice $nick 3Your report was sent and will be reviewed by a staff member within 48 hours. If you have made an error, just re-report it. Details: $2-  | msg %adminchan $nick has opened a new report. Server: $2 Username: $3 Issue: $4
+ON *:TEXT:!report *:#: notice $nick 3Your report was sent and will be reviewed by a staff member within 48 hours. If you have made an error, just re-report it. Details: $2-  | msg %staffchan $nick has opened a new report. Server: $2 Username: $3 Issue: $4
 ON *:TEXT:!remove *:#: notice $nick 3Your remove was submitted and will be reviewed by a staff member within 48 hours. | msg %adminchan $nick has requested to remove their BNC. Server: $2 Username $3 Network(s): $4
 
 
 ON *:TEXT:!accept %bncserver1 *:#: {
-  if ( $chan == %adminchan ) {
-    msg %homechan [ACCEPT] Request from $3 was 3ACCEPTED by $nick $+ . This account has been located on the server, %bncserver1 $+ . Please check the email you used to request this BNC for more information. | set %pending none | msg *controlpanel adduser $3 $4 | msg *controlpanel addnetwork $3 $5 | msg *controlpanel addserver $3 $5 $6
+  if ( $chan == %staffchan ) {
+    msg %bncchan [ACCEPT] Request from $3 was 3ACCEPTED by $nick $+ . This account has been located on the server, %bncserver1 $+ . Please check the email you used to request this BNC for more information. | set %pending none | msg *controlpanel adduser $3 $4 | msg *controlpanel addnetwork $3 $5 | msg *controlpanel addserver $3 $5 $6
   }
   else msg $nick 5Access Denied.
 }
 
 ON *:TEXT:!accept %bncserver2 *:#: {
-  if ( $chan == %adminchan ) {
-    msg %homechan [ACCEPT] Request from $3 was 3ACCEPTED by $nick $+ . This account has been located on the server, %bncserver2 $+ . Please check the email you used to request this BNC for more information. | set %pending none
+  if ( $chan == %staffchan ) {
+    msg %bncchan [ACCEPT] Request from $3 was 3ACCEPTED by $nick $+ . This account has been located on the server, %bncserver2 $+ . Please check the email you used to request this BNC for more information. | set %pending none
   }
   else msg $nick 5Access Denied.
 }
 
 ON *:TEXT:!accept %bncserver3 *:#: {
-  if ( $chan == %adminchan ) {
-    msg %homechan [ACCEPT] Request from $3 was 3ACCEPTED by $nick $+ . This account has been located on the server, %bncserver3 $+ . Please check the email you used to request this BNC for more information. | set %pending none
+  if ( $chan == %staffchan ) {
+    msg %bncchan [ACCEPT] Request from $3 was 3ACCEPTED by $nick $+ . This account has been located on the server, %bncserver3 $+ . Please check the email you used to request this BNC for more information. | set %pending none
   }
   else msg $nick 5Access Denied.
 }
 ;The pending feature doesn't work too well
 ON *:TEXT:!pending:#: {
-  if ( $chan == %adminchan ) {
-    msg %adminchan Current pending request: %pending 
+  if ( $chan == %staffchan ) {
+    msg $chan Current pending request: %pending 
   }
   else msg $nick 5Access Denied.
 }
 
 ON *:TEXT:!setnews *:#: {
-  if ( $chan == %adminchan ) {
+  if ( $chan == %staffchan ) {
     set %news (Posted by $nick on $date $+ ) $2- | msg %bncchan NEWS] (Posted by $nick $+ ) $2-
   }
   else msg $nick 5Access Denied.
 }
 
 ON *:TEXT:!clearnews:#: {
-  if ( $chan == %adminchan ) {
-    set %news None. | msg %adminchan $nick cleared the news.
+  if ( $chan == %staffchan ) {
+    set %news None. | msg %staffchan $nick cleared the news.
   }
   else msg $nick 5Access Denied.
 }
 
 ON *:TEXT:!topic *:#: {
-  if ( $chan == %adminchan ) {
+  if ( $chan == %staffchan ) {
     topic %bncchan $2-
   }
   else msg $nick 5Access Denied.
@@ -69,34 +69,34 @@ ON *:TEXT:!topic *:#: {
 
 ON *:TEXT:!request *:#: {
   if ( %requests == on ) {
-    msg %adminchan $nick has requested a BNC. Details: Username: $2 Email: $3 Network:$4 $5 | notice $nick Your request was sent and will be reviewed by a staff member within 48 hours. If you have made an error, just re-request it. Username: $2 Email: $3 Network: $4 $5 | set %pending Requested by $nick at $date $time $+ . Username: $2 Email: $3 Network: $4 $5 
+    msg %staffchan $nick has requested a BNC. Details: Username: $2 Email: $3 Network:$4 $5 | notice $nick Your request was sent and will be reviewed by a staff member within 48 hours. If you have made an error, just re-request it. Username: $2 Email: $3 Network: $4 $5 | set %pending Requested by $nick at $date $time $+ . Username: $2 Email: $3 Network: $4 $5 
   }
   else msg $chan Requests are currently locked for the reason, %requestreason $+ . Please check back later, sorry.
 }
 
 ON *:TEXT:!addnet *:#: {
   if ( %requests == on ) {
-    msg %adminchan $nick has requested that a network be added to their account. Server: $2 Username: $3 Network: $4 $5 | notice $nick 3Your request was sent and will be reviewed by a staff member within 48 hours. If you have made an error, just re-request it. Server: $2 Username: $3 Network: $4 $5 | set %pending Requested by $nick at $date $time $+ . Details: $2-
+    msg %staffchan $nick has requested that a network be added to their account. Server: $2 Username: $3 Network: $4 $5 | notice $nick 3Your request was sent and will be reviewed by a staff member within 48 hours. If you have made an error, just re-request it. Server: $2 Username: $3 Network: $4 $5 | set %pending Requested by $nick at $date $time $+ . Details: $2-
   }
   else msg $chan Requests are currently locked for the reason, %requestreason $+ . Please check back later, sorry.
 }
 
 ON *:TEXT:!addserver *:#: {
-  if ( $chan == %adminchan ) {
+  if ( $chan == %staffchan ) {
     msg *controlpanel addserver $2- | notice $nick Server added.
   }
   else msg $nick 5Access Denied.
 }
 
 ON *:TEXT:!addnetwork *:#: {
-  if ( $chan == %adminchan ) {
+  if ( $chan == %staffchan ) {
     msg *controlpanel addnetwork $2-
   }
   else msg $nick 5Access Denied.
 }
 
 ON *:TEXT:!adduser *:#: {
-  if ( $chan == %adminchan) {
+  if ( $chan == %staffchan) {
     msg *controlpanel adduser $2 | notice $nick User added. | msg %adminchan[ADD] $nick added a new user. | msg *controlpanel set quitmsg $2 WBNC - We've got it all! - http://wbnc.tk | msg *controlpanel set realname $2 WBNC - We've got it all!
   }
   else msg $nick 5Access Denied.
@@ -153,41 +153,41 @@ ON *:TEXT:!staffhelp *:#: {
 }
 
 ON *:TEXT:!rdisable *:#: {
-  if ( $chan == #WBNC-Staff ) {
-    set %requests off | msg #WBNC [REQUESTS] Requesting has been locked by $nick for the reason, $2- | set %requestreason $2-
+  if ( $chan == %staffchan ) {
+    set %requests off | msg %bncchan [REQUESTS] Requesting has been locked by $nick for the reason, $2- | set %requestreason $2-
   }
   else msg $nick 5Access Denied.
 }
 
 ON *:TEXT:!close *:#: {
-  if ( $chan == #WBNC-Staff ) {
-    msg #WBNC [REPORT] The report from $2 (located on the server, $3 $+ ) was closed by $nick $+ . Details: $4- $+ . This information has also been emailed the email address associated with this account.
+  if ( $chan == %staffchan ) {
+    msg %bncchan [REPORT] The report from $2 (located on the server, $3 $+ ) was closed by $nick $+ . Details: $4- $+ . This information has also been emailed the email address associated with this account.
   }
   else msg $nick 5Access Denied.
 }
 
 ON *:TEXT:!announce *:#: {
-  if ( $chan == #WBNC-Staff ) {
-    msg #WBNC [ANNOUNCEMENT] (From $nick $+ ) $2- 
+  if ( $chan == %staffchan ) {
+    msg %bncchan [ANNOUNCEMENT] (From $nick $+ ) $2- 
   }
   else msg $nick 5Access Denied.
 }
 
 ON *:TEXT:!block *:#: {
-  if ( $chan == #WBNC-Staff ) {
-    msg #WBNC [BLOCK] The network, $2 has been blocked until futher notice. Reason: $3-
+  if ( $chan == %staffchan ) {
+    msg %bncchan [BLOCK] The network, $2 has been blocked until futher notice. Reason: $3-
   }
   else msg $nick 5Access Denied.
 }
 
 ON *:TEXT:!unblock *:#: {
-  if ( $chan == #WBNC-Staff ) {
-    msg #WBNC [UNBLOCK] The block on the network, $2 has been cancelled.
+  if ( $chan == %staffchan ) {
+    msg %bncchan [UNBLOCK] The block on the network, $2 has been cancelled.
   }
   else msg $nick 5Access Denied.
 }
 
-ON *:TEXT:!staff:#: msg $chan The current staff members have been noticed to you, $nick $+ . | notice $nick Current staff members: %staffmember1 $+ , %staffmember2 $+ , %staffmember3 $+ & %staffmember4 $+ . More details can be found here: http://wbnc.tk/staff
+ON *:TEXT:!staff:#: msg $chan The current staff members have been noticed to you, $nick $+ . | notice $nick Current staff members: %staffmember1 $+ , %staffmember2 $+ , %staffmember3 $+ & %staffmember4 $+ . More details can be found here: http:// $+ %bncwebsite $+ /staff
 ON *:TEXT:!help:#: msg $chan 3A list of available commands have been noticed to you, $nick | notice $nick Available commands: help, staff, rules, panel, report, request, blocked, news, remove
 ON *:TEXT:!rules:#: msg $chan 3 $nick $+ : Our rules/terms can be found here: http:// $+ %bncwebsite $+ /rules
 ON *:TEXT:!panel:#: msg $chan $nick $+ : All webpanel links can be found here: http:// $+ %bncwebsite $+ /servers
