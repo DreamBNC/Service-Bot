@@ -11,6 +11,7 @@ set %bncwebsite wbnc.tk
 set %bncchan #WBNC
 set %staffchan #WBNC-Staff
 set %bncprovider WBNC
+set %slogan We've got it all!
 }
 ---------------END CONFIG------------------
 ON 1:JOIN:#: notice $nick 2Welcome to 3W10$+ %bncprovider $+ 2, a free BNC provider! To request a BNC, type !request <username> <email> <network> <port> 	Ex. !request John john@gmail.com irc.rizon.net 6667
@@ -97,14 +98,14 @@ ON *:TEXT:!addnetwork *:#: {
 
 ON *:TEXT:!adduser *:#: {
   if ( $chan == %staffchan) {
-    msg *controlpanel adduser $2 | notice $nick User added. | msg %adminchan[ADD] $nick added a new user. | msg *controlpanel set quitmsg $2 WBNC - We've got it all! - http://wbnc.tk | msg *controlpanel set realname $2 WBNC - We've got it all!
+    msg *controlpanel adduser $2 | notice $nick User added. | msg %adminchan[ADD] $nick added a new user. | msg *controlpanel set quitmsg $2 %bncprovider - %slogan - http:// $+ %bncwebsite | msg *controlpanel set realname $2 %bncprovider - %slogan
   }
   else msg $nick 5Access Denied.
 }
 
 ON *:TEXT:!deluser *:#: {
   if ( $chan == %staffchan ) {
-    msg *controlpanel set quitmsg $2 WBNC - We've got it all! - http:// $+ %bncwebsite - (Account removed by a staff member) | msg *controlpanel deluser $2 | notice $nick User deleted. | msg %staffchan [DELETE] $nick deleted the user $2-
+    msg *controlpanel set quitmsg $2 %bncprovider - %slogan - http:// $+ %bncwebsite - (Account removed by a staff member) | msg *controlpanel deluser $2 | notice $nick User deleted. | msg %staffchan [DELETE] $nick deleted the user $2-
   }
   else msg $nick 5Access Denied.
 }
