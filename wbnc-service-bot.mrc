@@ -1,5 +1,6 @@
 ;-----------------CONFIG-----------------
 alias config.load {
+echo -a Loading config...
 set %bncserver1 Vortex
 set %bncserver2 Keith
 set %bncserver3 Mercury
@@ -12,6 +13,7 @@ set %bncchan #WBNC
 set %staffchan #WBNC-Staff
 set %bncprovider WBNC
 set %slogan We've got it all!
+echo -a Config loaded!
 }
 ---------------END CONFIG------------------
 ON 1:JOIN:#: notice $nick 2Welcome to 3W10$+ %bncprovider $+ 2, a free BNC provider! To request a BNC, type !request <username> <email> <network> <port> 	Ex. !request John john@gmail.com irc.rizon.net 6667
