@@ -9,10 +9,10 @@ set %staffmember2 F4ncy
 set %staffmember3 xerox123
 set %staffmember4 HG
 set %bncwebsite wbnc.tk
-set %bncchan #WBNC
-set %staffchan #WBNC-Staff
-set %bncprovider WBNC
-set %slogan We've got it all!
+set %bncchan #DreamBNC
+set %staffchan #DreamBNC-Staff
+set %bncprovider DreamBNC
+set %slogan Bouncers like a dream!
 echo -a Config loaded!
 }
 ---------------END CONFIG------------------
