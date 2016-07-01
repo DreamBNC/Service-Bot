@@ -8,7 +8,7 @@ set %staffmember1 W24
 set %staffmember2 F4ncy
 set %staffmember3 xerox123
 set %staffmember4 HG
-set %bncwebsite wbnc.tk
+set %bncwebsite DreamBNC.xyz
 set %bncchan #DreamBNC
 set %staffchan #DreamBNC-Staff
 set %bncprovider DreamBNC
@@ -16,7 +16,7 @@ set %slogan Bouncers like a dream!
 echo -a Config loaded!
 }
 ---------------END CONFIG------------------
-ON 1:JOIN:#: notice $nick 2Welcome to 3W10$+ %bncprovider $+ 2, a free BNC provider! To request a BNC, type !request <username> <email> <network> <port> 	Ex. !request John john@gmail.com irc.rizon.net 6667
+ON 1:JOIN:#: notice $nick 2Welcome to 3the channel of10$+ %bncprovider $+ 2, a free BNC provider! To request a BNC, type !request <username> <email> <network> <port> 	Ex. !request John john@gmail.com irc.rizon.net 6667
 ON *:TEXT:!report *:#: notice $nick 3Your report was sent and will be reviewed by a staff member within 48 hours. If you have made an error, just re-report it. Details: $2-  | msg %staffchan $nick has opened a new report. Server: $2 Username: $3 Issue: $4
 ON *:TEXT:!remove *:#: notice $nick 3Your remove was submitted and will be reviewed by a staff member within 48 hours. | msg %adminchan $nick has requested to remove their BNC. Server: $2 Username $3 Network(s): $4
 
