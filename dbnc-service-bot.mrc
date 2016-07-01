@@ -24,6 +24,7 @@ echo -a BNC provider name set. (90%)
 set %slogan Bouncers like a dream!
 echo -a Slogan set. (100%)
 echo -a Configuration completed successfully!
+echo -a Service Bot (c) DreamBNC and nick1.
 }
 ---------------END CONFIG------------------
 ON 1:JOIN:#: notice $nick 2Welcome to 3the channel of10$+ %bncprovider $+ 2, a free BNC provider! To request a BNC, type !request <username> <email> <network> <port> 	Ex. !request John john@gmail.com irc.rizon.net 6667
@@ -160,14 +161,14 @@ ON *:TEXT:!renable *:#: {
 ;!staffhelp is a bit outdated
 ON *:TEXT:!staffhelp *:#: {
   if ( $chan == %staffchan ) {
-    notice $nick Staff commands: !reject <username> Rejects a request - !accept <username> Accepts a request - !close <username> Closes a report - !announce <message> Makes a new announcement - !suspend <network> Suspendes the network
+    notice $nick Staff commands: !reject <username> Rejects a request - !accept <username> Accepts a request - !close <username> Closes a report - !announce <message> Makes a new announcement - !suspend <network> Suspends the network
   }
   else msg $nick 5Access Denied.
 }
 
 ON *:TEXT:!rdisable *:#: {
   if ( $chan == %staffchan ) {
-    set %requests off | msg %bncchan [REQUESTS] Requesting has been locked by $nick for the reason, $2- | set %requestreason $2-
+    set %requests off | msg %bncchan [REQUESTS] Requesting has been halted by $nick for the reason, $2- | set %requestreason $2-
   }
   else msg $nick 5Access Denied.
 }
