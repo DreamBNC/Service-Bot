@@ -1,19 +1,29 @@
 ;-----------------CONFIG-----------------
 alias config.load {
 echo -a Loading config...
+echo -a Setting BNC servers...
 set %bncserver1 Vortex
 set %bncserver2 Keith
 set %bncserver3 Mercury
+echo -a Done setting BNC servers. (25%)
+echo -a Setting staff members...
 set %staffmember1 W24
 set %staffmember2 F4ncy
 set %staffmember3 xerox123
 set %staffmember4 HG
+echo -a Loaded staff members. (50%)
+echo -a Loading provider info...
 set %bncwebsite DreamBNC.xyz
+echo -a BNC website set. (60%)
 set %bncchan #DreamBNC
+echo -a BNC channel set. (70%)
 set %staffchan #DreamBNC-Staff
+echo -a Staff channel set. (80%)
 set %bncprovider DreamBNC
+echo -a BNC provider name set. (90%)
 set %slogan Bouncers like a dream!
-echo -a Config loaded!
+echo -a Slogan set. (100%)
+echo -a Configuration completed successfully!
 }
 ---------------END CONFIG------------------
 ON 1:JOIN:#: notice $nick 2Welcome to 3the channel of10$+ %bncprovider $+ 2, a free BNC provider! To request a BNC, type !request <username> <email> <network> <port> 	Ex. !request John john@gmail.com irc.rizon.net 6667
