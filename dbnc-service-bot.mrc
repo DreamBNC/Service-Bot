@@ -214,17 +214,20 @@ ON *:TEXT:!servers:#: msg $chan Current servers: 3 %bncserver1 $+ , %bncserver2
 ON *:TEXT:!news:#: msg $chan %news
 ; //////////////////////// EMAILS   /////////////////////////////////
 
-alias email.accept {
+alias email.accept. $+ %bncserver1 {
   email.start debug
 
   email.from you@email.here my name
   email.to sned@email.here  asd
-  email.subject I am testing a new EMAIL sending thingy
+  email.subject %bncprovider Request Accepted!
 
-  email.body Hello. Your BNC request was accepted! Details are below.
+  email.body Hello. We are pleased to inform you that your BNC request was accepted by $nick $+ !
   email.body 
-  email.body right so I haven't set this up yet
-
+  email.body Username: %bncserver1user
+  email.body Password: %bncserver1pass
+  email.body Server: %bncserver1
+  email.body Ports: %ports 
+  
   email.send my_erroralias
 
 }
